@@ -28,6 +28,20 @@ function detectOS() {
   return "other";
 }
 
+// Helper to transform Google Drive sharing links to direct download links
+function getDirectDownloadUrl(url) {
+  if (!url) return "";
+  if (url.includes("drive.google.com")) {
+    const regOpen = /id=([a-zA-Z0-9_-]+)/;
+    const regFile = /\/file\/d\/([a-zA-Z0-9_-]+)/;
+    let match = url.match(regOpen) || url.match(regFile);
+    if (match && match[1]) {
+      return `https://drive.google.com/uc?export=download&id=${match[1]}`;
+    }
+  }
+  return url;
+}
+
 function renderAppShowcase(userOS) {
   const grid = document.getElementById("apps-grid");
   if (!grid) return;
@@ -61,13 +75,19 @@ function renderAppShowcase(userOS) {
         const buttonClass = `btn-download ${platform} ${isUserPlatform ? 'user-platform' : ''}`;
         
         // Use Google Drive url if available, otherwise relative local path
-        const downloadUrl = dl.url ? dl.url : dl.localPath;
+        let downloadUrl = dl.url ? dl.url : dl.localPath;
+        downloadUrl = getDirectDownloadUrl(downloadUrl);
+        
         const icon = platform === "mac" ? ICONS.apple : ICONS.windows;
         const isExternal = !!dl.url;
-        const actionIcon = isExternal ? ICONS.external : ICONS.download;
+        const isGoogleDrive = downloadUrl.includes("drive.google.com");
+        
+        // For direct Google Drive downloads, use download icon instead of external link icon
+        const actionIcon = (isExternal && !isGoogleDrive) ? ICONS.external : ICONS.download;
+        const targetAttr = (isExternal && !isGoogleDrive) ? '_blank' : '_self';
         
         downloadsHTML += `
-          <a href="${downloadUrl}" target="${isExternal ? '_blank' : '_self'}" class="${buttonClass}" title="Descargar para ${platform === 'mac' ? 'macOS' : 'Windows'}">
+          <a href="${downloadUrl}" target="${targetAttr}" class="${buttonClass}" title="Descargar para ${platform === 'mac' ? 'macOS' : 'Windows'}">
             ${icon}
             <div class="btn-text">
               <span>${dl.label}</span>
