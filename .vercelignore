@@ -1,0 +1,6 @@
+# Ignorar instaladores pesados para no exceder los límites de Vercel
+*.dmg
+*.exe
+*.zip
+*.app/
+.DS_Store
