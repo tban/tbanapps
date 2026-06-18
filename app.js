@@ -36,7 +36,10 @@ function getDirectDownloadUrl(url) {
     const regFile = /\/file\/d\/([a-zA-Z0-9_-]+)/;
     let match = url.match(regOpen) || url.match(regFile);
     if (match && match[1]) {
-      return `https://drive.google.com/uc?export=download&id=${match[1]}`;
+      return `https://drive.google.com/uc?export=download&id=${match[1]}&confirm=t`;
+    }
+    if (url.includes("export=download") && !url.includes("confirm=")) {
+      return `${url}&confirm=t`;
     }
   }
   return url;

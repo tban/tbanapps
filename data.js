@@ -23,13 +23,13 @@ const appsData = [
     downloads: {
       mac: {
         label: "macOS (.dmg)",
-        url: "https://drive.google.com/uc?export=download&id=1bxE2vziPKfNEbWwSo0zO6IG_3qz7EwCc",
+        url: "https://drive.google.com/uc?export=download&id=1bxE2vziPKfNEbWwSo0zO6IG_3qz7EwCc&confirm=t",
         localPath: "ANONIDATA/AnoniData.dmg",
         arch: "Universal"
       },
       windows: {
         label: "Windows (.exe)",
-        url: "https://drive.google.com/uc?export=download&id=1aE8XuzonmI9Bi50Th7vk9FawOHkthf_4",
+        url: "https://drive.google.com/uc?export=download&id=1aE8XuzonmI9Bi50Th7vk9FawOHkthf_4&confirm=t",
         arch: "x64"
       }
     }
