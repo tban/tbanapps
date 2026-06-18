@@ -169,5 +169,63 @@ function renderAppShowcase(userOS) {
         }
       });
     });
+
+    // Setup download disclaimer trigger for this card
+    const downloadBtns = card.querySelectorAll(".btn-download");
+    downloadBtns.forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        activeDownloadUrl = btn.getAttribute("href");
+        showDownloadModal();
+      });
+    });
+  });
+}
+
+// Modal DOM elements and handlers
+let activeDownloadUrl = null;
+
+const modalOverlay = document.getElementById("download-modal");
+const modalCancelBtn = document.getElementById("modal-cancel-btn");
+const modalAcceptBtn = document.getElementById("modal-accept-btn");
+
+function showDownloadModal() {
+  if (!modalOverlay) return;
+  modalOverlay.style.display = "flex";
+  modalOverlay.offsetHeight;
+  modalOverlay.classList.add("show");
+}
+
+function hideDownloadModal() {
+  if (!modalOverlay) return;
+  modalOverlay.classList.remove("show");
+  setTimeout(() => {
+    modalOverlay.style.display = "none";
+  }, 300);
+}
+
+if (modalCancelBtn) {
+  modalCancelBtn.addEventListener("click", hideDownloadModal);
+}
+
+if (modalOverlay) {
+  modalOverlay.addEventListener("click", (e) => {
+    if (e.target === modalOverlay) {
+      hideDownloadModal();
+    }
+  });
+}
+
+if (modalAcceptBtn) {
+  modalAcceptBtn.addEventListener("click", () => {
+    if (activeDownloadUrl) {
+      const tempLink = document.createElement("a");
+      tempLink.href = activeDownloadUrl;
+      tempLink.setAttribute("target", "_self");
+      document.body.appendChild(tempLink);
+      tempLink.click();
+      document.body.removeChild(tempLink);
+    }
+    hideDownloadModal();
   });
 }
