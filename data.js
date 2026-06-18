@@ -23,7 +23,7 @@ const appsData = [
     downloads: {
       mac: {
         label: "macOS (.dmg)",
-        url: "https://drive.google.com/uc?export=download&id=1bxE2vziPKfNEbWwSo0zO6IG_3qz7EwCc&confirm=t",
+        url: "https://github.com/tban/tbanapps/releases/download/v1.0.0/AnoniData.dmg",
         localPath: "ANONIDATA/AnoniData.dmg",
         arch: "Universal"
       },
@@ -86,11 +86,13 @@ const appsData = [
     downloads: {
       mac: {
         label: "macOS (.dmg)",
+        url: "https://github.com/tban/tbanapps/releases/download/v1.0.0/PDF%20Collector-1.0.0.dmg",
         localPath: "GETURLFILES/PDF Collector-1.0.0.dmg",
         arch: "Intel / Apple Silicon"
       },
       windows: {
         label: "Windows (.exe)",
+        url: "https://github.com/tban/tbanapps/releases/download/v1.0.0/PDF%20Collector%20Setup%201.0.0.exe",
         localPath: "GETURLFILES/PDF Collector Setup 1.0.0.exe",
         arch: "x64"
       }
