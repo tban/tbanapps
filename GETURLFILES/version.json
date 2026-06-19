@@ -1,20 +1,20 @@
 {
   "productName": "PDF Collector",
   "version": "1.0.7",
-  "build": 6,
-  "date": "2026-06-19T10:28:24.443Z",
+  "build": 7,
+  "date": "2026-06-19T11:27:40.024Z",
   "platforms": {
     "mac": {
       "label": "macOS (.dmg)",
-      "filename": "PDF Collector-1.0.7.dmg",
+      "filename": "PDF Collector.dmg",
       "arch": "Intel / Apple Silicon",
-      "url": "https://github.com/tban/tbanapps/releases/download/v{VERSION}/PDF%20Collector-{VERSION}.dmg"
+      "url": "https://drive.google.com/uc?export=download&id=1rqYyTvLDng41QaHuyNpGiAuYv2hzUuJ1&confirm=t"
     },
     "windows": {
       "label": "Windows (.exe)",
-      "filename": "PDF Collector Setup 1.0.7.exe",
+      "filename": "PDF Collector Setup.exe",
       "arch": "x64",
-      "url": "https://github.com/tban/tbanapps/releases/download/v{VERSION}/PDF%20Collector%20Setup%20{VERSION}.exe"
+      "url": "https://drive.google.com/uc?export=download&id=1Pmu1TKb3z0BTc9_bJFaUxlAmgO38CDrS&confirm=t"
     }
   }
 }
