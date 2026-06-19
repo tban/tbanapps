@@ -1,4 +1,4 @@
-const lastPublishedDate = "2026-06-19T10:01:31+01:00";
+const lastPublishedDate = "2026-06-19T10:30:26+01:00";
 
 const appsData = [
   {
