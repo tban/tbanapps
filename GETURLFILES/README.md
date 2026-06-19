@@ -4,7 +4,8 @@ Descarga y combina PDFs de cualquier sitio web
 
 ## Últimas Novedades
 
-### Versión 1.0.7 (Lanzada el 19/6/2026)
+### Versión 1.0.8 (Lanzada el 19/6/2026)
+- Cierre forzado automático de la aplicación y procesos secundarios durante la instalación/actualización para evitar bloqueos en Windows.
 - Corrección de visualización del icono (favicon) y barra de tareas en la versión de Windows.
 - Ocultación de todos los menús en la versión de Windows, dejando únicamente el menú "Ayuda" con las opciones de "Buscar actualización..." y "Acerca de".
 - Optimización y reducción de tamaño en los recursos de imagen (logo PNG de 256x256 e icon.ico de 256x256).
