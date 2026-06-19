@@ -4,10 +4,9 @@ Descarga y combina PDFs de cualquier sitio web
 
 ## Últimas Novedades
 
-### Versión 1.0.2 (Lanzada el 19/6/2026)
-- Eliminación de la opción de profundidad de búsqueda 'Infinito (99)' en el panel de opciones avanzadas.
-- Corrección del error en la descarga de actualizaciones desde Google Drive (evasión de la advertencia de virus para archivos grandes).
-- Optimización general en los flujos de búsqueda y descarga de la aplicación.
+### Versión 1.0.5 (Lanzada el 19/6/2026)
+- Unificación del nombre de los ejecutables en Google Drive (sin incluir el número de versión en el nombre de archivo).
+- Eliminación automática de las versiones de ejecutables anteriores en el repositorio al publicar una nueva actualización.
 
 ## Características Técnicas de Desarrollo
 

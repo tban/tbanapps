@@ -1,8 +1,8 @@
 {
   "productName": "Anonidata",
-  "version": "1.0.0",
-  "build": 24,
-  "date": "2026-06-19T04:41:55.387Z",
+  "version": "1.0.1",
+  "build": 27,
+  "date": "2026-06-19T08:52:48.551Z",
   "installers": [
     "AnoniData.dmg"
   ],

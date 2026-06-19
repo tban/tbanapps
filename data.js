@@ -1,12 +1,12 @@
-const lastPublishedDate = "2026-06-19T05:49:50+01:00";
+const lastPublishedDate = "2026-06-19T10:01:31+01:00";
 
 const appsData = [
   {
     id: "anonidata",
     name: "AnoniData",
     tagline: "Anonimización de PDFs 100% Local y Segura",
-    version: "1.0.0",
-    releaseDate: "2026-06-19T04:41:55.387Z",
+    version: "1.0.1",
+    releaseDate: "2026-06-19T08:52:48.551Z",
     logo: "ANONIDATA/logo.png",
     description: "AnoniData es una herramienta profesional de escritorio diseñada para eliminar de forma irreversible datos de carácter personal (PII) en documentos PDF. Todo el procesamiento se realiza de manera 100% local en tu ordenador, garantizando el cumplimiento estricto del RGPD (Reglamento General de Protección de Datos) y el principio de 'Zero Data Retention'.",
     features: [
@@ -70,8 +70,8 @@ const appsData = [
     id: "geturlfiles",
     name: "PDF Collector",
     tagline: "Descarga y fusión de PDFs desde cualquier sitio web",
-    version: "1.0.2",
-    releaseDate: "2026-06-19T04:33:42.126Z",
+    version: "1.0.5",
+    releaseDate: "2026-06-19T08:58:29.007Z",
     logo: "GETURLFILES/logo.png",
     description: "PDF Collector es una potente utilidad de escritorio que simplifica el web scraping de archivos PDF. Introduce cualquier enlace web y la aplicación analizará el código HTML, detectará los enlaces de descarga de PDFs de forma concurrente, los descargará en tu equipo local y te permitirá combinarlos en un único documento unificado o empaquetarlos en un archivo ZIP con un solo clic.",
     features: [
@@ -83,21 +83,20 @@ const appsData = [
       "Mecanismo automático de descarga y compresión en lotes usando JSZip"
     ],
     releaseNotes: [
-      "Eliminación de la opción de profundidad de búsqueda 'Infinito (99)' en el panel de opciones avanzadas.",
-      "Corrección del error en la descarga de actualizaciones desde Google Drive (evasión de la advertencia de virus para archivos grandes).",
-      "Optimización general en los flujos de búsqueda y descarga de la aplicación."
+      "Unificación del nombre de los ejecutables en Google Drive (sin incluir el número de versión en el nombre de archivo).",
+      "Eliminación automática de las versiones de ejecutables anteriores en el repositorio al publicar una nueva actualización."
     ],
     downloads: {
       mac: {
         label: "macOS (.dmg)",
-        url: "https://github.com/tban/tbanapps/releases/download/v1.0.2/PDF%20Collector-1.0.2.dmg",
-        localPath: "GETURLFILES/PDF Collector-1.0.2.dmg",
+        url: "https://github.com/tban/tbanapps/releases/download/v1.0.5/PDF%20Collector-1.0.5.dmg",
+        localPath: "GETURLFILES/PDF Collector-1.0.5.dmg",
         arch: "Intel / Apple Silicon"
       },
       windows: {
         label: "Windows (.exe)",
-        url: "https://github.com/tban/tbanapps/releases/download/v1.0.2/PDF%20Collector%20Setup%201.0.2.exe",
-        localPath: "GETURLFILES/PDF Collector Setup 1.0.2.exe",
+        url: "https://github.com/tban/tbanapps/releases/download/v1.0.5/PDF%20Collector%20Setup%201.0.5.exe",
+        localPath: "GETURLFILES/PDF Collector Setup 1.0.5.exe",
         arch: "x64"
       }
     }

@@ -189,8 +189,18 @@ async function loadDynamicShowcase(userOS) {
       for (const platform in app.downloads) {
         const dlConfig = app.downloads[platform];
         let downloadUrl = "";
+        let label = dlConfig.label;
+        let arch = dlConfig.arch;
         
-        if (dlConfig.urlTemplate) {
+        if (versionData.platforms && versionData.platforms[platform]) {
+          const platData = versionData.platforms[platform];
+          downloadUrl = platData.url || "";
+          if (downloadUrl) {
+            downloadUrl = downloadUrl.replace(/{VERSION}/g, version);
+          }
+          if (platData.label) label = platData.label;
+          if (platData.arch) arch = platData.arch;
+        } else if (dlConfig.urlTemplate) {
           downloadUrl = dlConfig.urlTemplate.replace(/{VERSION}/g, version);
         } else if (versionData.downloadUrls) {
           const installerKey = Object.keys(versionData.downloadUrls).find(key => {
@@ -210,9 +220,9 @@ async function loadDynamicShowcase(userOS) {
         downloadUrl = getDirectDownloadUrl(downloadUrl);
         
         downloads[platform] = {
-          label: dlConfig.label,
+          label: label,
           url: downloadUrl,
-          arch: dlConfig.arch
+          arch: arch
         };
       }
       

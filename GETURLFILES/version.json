@@ -1,5 +1,20 @@
 {
-  "version": "1.0.2",
-  "notes": "- Eliminación de la opción de profundidad de búsqueda 'Infinito (99)' en el panel de opciones avanzadas.\n- Corrección del error en la descarga de actualizaciones desde Google Drive (evasión de la advertencia de virus para archivos grandes).\n- Optimización general en los flujos de búsqueda y descarga de la aplicación.",
-  "date": "2026-06-19T04:33:42.126Z"
+  "productName": "PDF Collector",
+  "version": "1.0.5",
+  "build": 3,
+  "date": "2026-06-19T08:58:29.007Z",
+  "platforms": {
+    "mac": {
+      "label": "macOS (.dmg)",
+      "filename": "PDF Collector-1.0.5.dmg",
+      "arch": "Intel / Apple Silicon",
+      "url": "https://github.com/tban/tbanapps/releases/download/v{VERSION}/PDF%20Collector-{VERSION}.dmg"
+    },
+    "windows": {
+      "label": "Windows (.exe)",
+      "filename": "PDF Collector Setup 1.0.5.exe",
+      "arch": "x64",
+      "url": "https://github.com/tban/tbanapps/releases/download/v{VERSION}/PDF%20Collector%20Setup%20{VERSION}.exe"
+    }
+  }
 }
