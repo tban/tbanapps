@@ -4,7 +4,8 @@ Descarga y combina PDFs de cualquier sitio web
 
 ## Últimas Novedades
 
-### Versión 1.0.8 (Lanzada el 19/6/2026)
+### Versión 1.0.9 (Lanzada el 19/6/2026)
+- Corrección del enlace de descarga del actualizador para Windows en Google Drive (apuntando al ID de archivo activo correcto).
 - Cierre forzado automático de la aplicación y procesos secundarios durante la instalación/actualización para evitar bloqueos en Windows.
 - Corrección de visualización del icono (favicon) y barra de tareas en la versión de Windows.
 - Ocultación de todos los menús en la versión de Windows, dejando únicamente el menú "Ayuda" con las opciones de "Buscar actualización..." y "Acerca de".

@@ -1,8 +1,8 @@
 {
   "productName": "PDF Collector",
-  "version": "1.0.8",
-  "build": 8,
-  "date": "2026-06-19T11:39:07.092Z",
+  "version": "1.0.9",
+  "build": 9,
+  "date": "2026-06-19T19:20:45.736Z",
   "platforms": {
     "mac": {
       "label": "macOS (.dmg)",
@@ -14,7 +14,7 @@
       "label": "Windows (.exe)",
       "filename": "PDF Collector Setup.exe",
       "arch": "x64",
-      "url": "https://drive.google.com/uc?export=download&id=1Pmu1TKb3z0BTc9_bJFaUxlAmgO38CDrS&confirm=t"
+      "url": "https://drive.google.com/uc?export=download&id=1_dNrj9_vIQH6RzJL5venBZHF40l3hwd7&confirm=t"
     }
   }
 }
