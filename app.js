@@ -11,8 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Detect User Operating System
   const userOS = detectOS();
   
-  // Render App Showcase
-  renderAppShowcase(userOS);
+  // Render App Showcase Dynamically
+  loadDynamicShowcase(userOS);
   
   // Calculate and display last publication time
   updateLastPublishTime();
@@ -48,30 +48,240 @@ function getDirectDownloadUrl(url) {
   return url;
 }
 
-function renderAppShowcase(userOS) {
+// Parse markdown to extract description, features and release notes
+function parseReadme(markdown) {
+  const lines = markdown.split(/\r?\n/);
+  let description = "";
+  let features = [];
+  let releaseNotes = [];
+  
+  let currentSection = ""; // "desc", "novedades", "caracteristicas"
+  let descriptionLines = [];
+  
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+    if (!line) continue;
+    
+    // Check headings
+    if (line.startsWith("# ")) {
+      currentSection = "desc";
+      continue;
+    } else if (line.startsWith("##")) {
+      const lowerLine = line.toLowerCase();
+      if (lowerLine.includes("novedad") || lowerLine.includes("mejor") || lowerLine.includes("nota")) {
+        currentSection = "novedades";
+      } else if (lowerLine.includes("caracter") || lowerLine.includes("técnic") || lowerLine.includes("tecnic") || lowerLine.includes("seguridad") || lowerLine.includes("privacidad")) {
+        currentSection = "caracteristicas";
+      } else {
+        currentSection = "";
+      }
+      continue;
+    }
+    
+    // Process content based on section
+    if (currentSection === "desc") {
+      descriptionLines.push(line);
+    } else if (currentSection === "novedades") {
+      if (line.startsWith("- ") || line.startsWith("* ")) {
+        const cleanItem = line.substring(2).trim().replace(/\*\*/g, "");
+        if (cleanItem) releaseNotes.push(cleanItem);
+      }
+    } else if (currentSection === "caracteristicas") {
+      if (line.startsWith("- ") || line.startsWith("* ")) {
+        const cleanItem = line.substring(2).trim().replace(/\*\*/g, "");
+        if (cleanItem) features.push(cleanItem);
+      }
+    }
+  }
+  
+  description = descriptionLines.join(" ");
+  return { description, features, releaseNotes };
+}
+
+// Load version.json and README.md files dynamically
+async function loadDynamicShowcase(userOS) {
   const grid = document.getElementById("apps-grid");
   if (!grid) return;
   
-  // Clear placeholder
+  const appsConfig = [
+    {
+      id: "anonidata",
+      folder: "ANONIDATA",
+      name: "AnoniData",
+      tagline: "Anonimización de PDFs 100% Local y Segura",
+      logo: "ANONIDATA/logo.png",
+      downloads: {
+        mac: {
+          label: "macOS (.dmg)",
+          urlTemplate: "https://github.com/tban/tbanapps/releases/download/v{VERSION}/AnoniData.dmg",
+          localPath: "ANONIDATA/AnoniData.dmg",
+          arch: "Universal"
+        },
+        windows: {
+          label: "Windows (.exe)",
+          urlTemplate: "https://drive.google.com/uc?export=download&id=1aE8XuzonmI9Bi50Th7vk9FawOHkthf_4&confirm=t",
+          arch: "x64"
+        }
+      }
+    },
+    {
+      id: "caffeinatenow",
+      folder: "CAFFEINATENOW",
+      name: "CaffeinateNow",
+      tagline: "Control de reposo minimalista y moderno para macOS",
+      logo: "CAFFEINATENOW/logo.png",
+      downloads: {
+        mac: {
+          label: "macOS ARM64 (.zip)",
+          localPath: "CAFFEINATENOW/CaffeinateNow.zip",
+          arch: "Apple Silicon ARM"
+        }
+      }
+    },
+    {
+      id: "geturlfiles",
+      folder: "GETURLFILES",
+      name: "PDF Collector",
+      tagline: "Descarga y fusión de PDFs desde cualquier sitio web",
+      logo: "GETURLFILES/logo.png",
+      downloads: {
+        mac: {
+          label: "macOS (.dmg)",
+          urlTemplate: "https://github.com/tban/tbanapps/releases/download/v{VERSION}/PDF%20Collector-{VERSION}.dmg",
+          localPath: "GETURLFILES/PDF Collector-{VERSION}.dmg",
+          arch: "Intel / Apple Silicon"
+        },
+        windows: {
+          label: "Windows (.exe)",
+          urlTemplate: "https://github.com/tban/tbanapps/releases/download/v{VERSION}/PDF%20Collector%20Setup%20{VERSION}.exe",
+          localPath: "GETURLFILES/PDF Collector Setup {VERSION}.exe",
+          arch: "x64"
+        }
+      }
+    }
+  ];
+
+  const processedApps = [];
+  
+  for (const app of appsConfig) {
+    try {
+      // Fetch version.json and README.md in parallel
+      const [versionRes, readmeRes] = await Promise.all([
+        fetch(`${app.folder}/version.json`),
+        fetch(`${app.folder}/README.md`)
+      ]);
+      
+      if (!versionRes.ok || !readmeRes.ok) {
+        throw new Error(`Failed to load metadata files for ${app.name}`);
+      }
+      
+      const versionData = await versionRes.json();
+      const readmeText = await readmeRes.text();
+      
+      const parsedReadme = parseReadme(readmeText);
+      
+      // Resolve version and dates
+      const version = versionData.version;
+      const releaseDate = versionData.date || null;
+      
+      // Resolve downloads
+      const downloads = {};
+      for (const platform in app.downloads) {
+        const dlConfig = app.downloads[platform];
+        let downloadUrl = "";
+        
+        if (dlConfig.urlTemplate) {
+          downloadUrl = dlConfig.urlTemplate.replace(/{VERSION}/g, version);
+        } else if (versionData.downloadUrls) {
+          const installerKey = Object.keys(versionData.downloadUrls).find(key => {
+            if (platform === "mac") return key.endsWith(".dmg") || key.endsWith(".zip");
+            if (platform === "windows") return key.endsWith(".exe");
+            return false;
+          });
+          if (installerKey) {
+            downloadUrl = versionData.downloadUrls[installerKey];
+          }
+        }
+        
+        if (!downloadUrl && dlConfig.localPath) {
+          downloadUrl = dlConfig.localPath.replace(/{VERSION}/g, version);
+        }
+        
+        downloadUrl = getDirectDownloadUrl(downloadUrl);
+        
+        downloads[platform] = {
+          label: dlConfig.label,
+          url: downloadUrl,
+          arch: dlConfig.arch
+        };
+      }
+      
+      processedApps.push({
+        id: app.id,
+        name: app.name,
+        tagline: app.tagline,
+        logo: app.logo,
+        version: version,
+        releaseDate: releaseDate,
+        description: parsedReadme.description || app.tagline,
+        features: parsedReadme.features.length > 0 ? parsedReadme.features : [app.tagline],
+        releaseNotes: parsedReadme.releaseNotes.length > 0 ? parsedReadme.releaseNotes : ["Actualizaciones de estabilidad y corrección de errores."],
+        downloads: downloads
+      });
+      
+    } catch (error) {
+      console.warn(`Dynamic load failed for ${app.name}, falling back to static local data:`, error);
+      
+      // Fallback to static data from data.js
+      if (typeof appsData !== 'undefined') {
+        const fallbackApp = appsData.find(item => item.id === app.id);
+        if (fallbackApp) {
+          processedApps.push(fallbackApp);
+        }
+      }
+    }
+  }
+  
+  if (processedApps.length === 0 && typeof appsData !== 'undefined') {
+    renderAppShowcase(appsData, userOS);
+  } else {
+    renderAppShowcase(processedApps, userOS);
+  }
+}
+
+// Render the application cards grid
+function renderAppShowcase(appsList, userOS) {
+  const grid = document.getElementById("apps-grid");
+  if (!grid) return;
+  
   grid.innerHTML = "";
   
-  appsData.forEach(app => {
+  appsList.forEach(app => {
     const card = document.createElement("article");
     card.className = "app-card";
     card.id = `card-${app.id}`;
+    
+    // Check if app has recent updates (within 10 days)
+    let isRecent = false;
+    if (app.releaseDate) {
+      const releaseDate = new Date(app.releaseDate);
+      const currentDate = new Date();
+      const diffTime = currentDate - releaseDate;
+      const diffDays = diffTime / (1000 * 60 * 60 * 24);
+      if (diffDays >= 0 && diffDays <= 10) {
+        isRecent = true;
+      }
+    }
     
     // Build download buttons HTML
     let downloadsHTML = "";
     const downloads = app.downloads;
     
     if (downloads) {
-      // Re-order downloads list to show user's OS first
       const platforms = Object.keys(downloads);
       if (userOS === "mac" && platforms.includes("mac")) {
-        // Shift mac to first
         platforms.sort((a, b) => a === "mac" ? -1 : 1);
       } else if (userOS === "windows" && platforms.includes("windows")) {
-        // Shift windows to first
         platforms.sort((a, b) => a === "windows" ? -1 : 1);
       }
       
@@ -80,7 +290,6 @@ function renderAppShowcase(userOS) {
         const isUserPlatform = platform === userOS;
         const buttonClass = `btn-download ${platform} ${isUserPlatform ? 'user-platform' : ''}`;
         
-        // Use Google Drive url if available, otherwise relative local path
         let downloadUrl = dl.url ? dl.url : dl.localPath;
         downloadUrl = getDirectDownloadUrl(downloadUrl);
         
@@ -88,7 +297,6 @@ function renderAppShowcase(userOS) {
         const isExternal = !!dl.url;
         const isGoogleDrive = downloadUrl.includes("drive.google.com");
         
-        // For direct Google Drive downloads, use download icon instead of external link icon
         const actionIcon = (isExternal && !isGoogleDrive) ? ICONS.external : ICONS.download;
         const targetAttr = (isExternal && !isGoogleDrive) ? '_blank' : '_self';
         
@@ -105,22 +313,7 @@ function renderAppShowcase(userOS) {
       });
     }
 
-    // Check if app has recent updates (within 10 days)
-    let isRecent = false;
-    if (app.releaseDate) {
-      const releaseDate = new Date(app.releaseDate);
-      const currentDate = new Date();
-      const diffTime = currentDate - releaseDate;
-      const diffDays = diffTime / (1000 * 60 * 60 * 24);
-      if (diffDays >= 0 && diffDays <= 10) {
-        isRecent = true;
-      }
-    }
-
-    // Build features list HTML
     const featuresListHTML = app.features.map(feat => `<li>${feat}</li>`).join("");
-    
-    // Build release notes HTML
     const releaseNotesHTML = app.releaseNotes.map(note => `<li>${note}</li>`).join("");
 
     card.innerHTML = `
@@ -175,11 +368,9 @@ function renderAppShowcase(userOS) {
     const tabBtns = card.querySelectorAll(".tab-btn");
     tabBtns.forEach(btn => {
       btn.addEventListener("click", () => {
-        // Deactivate other tabs/panels in this card
         card.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
         card.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
         
-        // Activate selected tab & panel
         btn.classList.add("active");
         const targetId = btn.getAttribute("data-tab");
         const targetPanel = card.querySelector(`#${targetId}`);

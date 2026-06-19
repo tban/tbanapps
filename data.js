@@ -1,4 +1,4 @@
-const lastPublishedDate = "2026-06-19T00:39:10+01:00";
+const lastPublishedDate = "2026-06-19T05:49:50+01:00";
 
 const appsData = [
   {
@@ -6,7 +6,7 @@ const appsData = [
     name: "AnoniData",
     tagline: "Anonimización de PDFs 100% Local y Segura",
     version: "1.0.0",
-    releaseDate: "2026-06-18T22:14:14.596Z",
+    releaseDate: "2026-06-19T04:41:55.387Z",
     logo: "ANONIDATA/logo.png",
     description: "AnoniData es una herramienta profesional de escritorio diseñada para eliminar de forma irreversible datos de carácter personal (PII) en documentos PDF. Todo el procesamiento se realiza de manera 100% local en tu ordenador, garantizando el cumplimiento estricto del RGPD (Reglamento General de Protección de Datos) y el principio de 'Zero Data Retention'.",
     features: [
@@ -70,8 +70,8 @@ const appsData = [
     id: "geturlfiles",
     name: "PDF Collector",
     tagline: "Descarga y fusión de PDFs desde cualquier sitio web",
-    version: "1.0.0",
-    releaseDate: "2026-06-18T22:19:25.659Z",
+    version: "1.0.2",
+    releaseDate: "2026-06-19T04:33:42.126Z",
     logo: "GETURLFILES/logo.png",
     description: "PDF Collector es una potente utilidad de escritorio que simplifica el web scraping de archivos PDF. Introduce cualquier enlace web y la aplicación analizará el código HTML, detectará los enlaces de descarga de PDFs de forma concurrente, los descargará en tu equipo local y te permitirá combinarlos en un único documento unificado o empaquetarlos en un archivo ZIP con un solo clic.",
     features: [
@@ -83,22 +83,21 @@ const appsData = [
       "Mecanismo automático de descarga y compresión en lotes usando JSZip"
     ],
     releaseNotes: [
-      "Versión Inicial 1.0.0: Lanzamiento oficial de la aplicación con soporte para web scraping concurrente de PDFs.",
-      "Sistema de Auto-actualización: Integración de comprobación automática de actualizaciones al arrancar la aplicación desde Google Drive.",
-      "Comprobación Manual: Botón dedicado en el panel del menú para comprobar versiones manualmente.",
-      "Redes Sociales del Creador: Incorporación de enlace directo a Twitter/X (@Tbanr) en el panel principal."
+      "Eliminación de la opción de profundidad de búsqueda 'Infinito (99)' en el panel de opciones avanzadas.",
+      "Corrección del error en la descarga de actualizaciones desde Google Drive (evasión de la advertencia de virus para archivos grandes).",
+      "Optimización general en los flujos de búsqueda y descarga de la aplicación."
     ],
     downloads: {
       mac: {
         label: "macOS (.dmg)",
-        url: "https://github.com/tban/tbanapps/releases/download/v1.0.0/PDF%20Collector-1.0.0.dmg",
-        localPath: "GETURLFILES/PDF Collector-1.0.0.dmg",
+        url: "https://github.com/tban/tbanapps/releases/download/v1.0.2/PDF%20Collector-1.0.2.dmg",
+        localPath: "GETURLFILES/PDF Collector-1.0.2.dmg",
         arch: "Intel / Apple Silicon"
       },
       windows: {
         label: "Windows (.exe)",
-        url: "https://github.com/tban/tbanapps/releases/download/v1.0.0/PDF%20Collector%20Setup%201.0.0.exe",
-        localPath: "GETURLFILES/PDF Collector Setup 1.0.0.exe",
+        url: "https://github.com/tban/tbanapps/releases/download/v1.0.2/PDF%20Collector%20Setup%201.0.2.exe",
+        localPath: "GETURLFILES/PDF Collector Setup 1.0.2.exe",
         arch: "x64"
       }
     }

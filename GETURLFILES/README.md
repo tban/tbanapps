@@ -4,11 +4,10 @@ Descarga y combina PDFs de cualquier sitio web
 
 ## Últimas Novedades
 
-### Versión 1.0.0 (Lanzada el 18/6/2026)
-- Implementación de mecanismo de auto-actualización automática desde Google Drive.
-- Soporte para comprobación manual de actualizaciones desde el menú de la aplicación.
-- Correcciones de errores y optimización en la descarga y combinación de archivos PDF.
-- Añadido enlace a Twitter/X del desarrollador (@Tbanr) en la pantalla principal.
+### Versión 1.0.2 (Lanzada el 19/6/2026)
+- Eliminación de la opción de profundidad de búsqueda 'Infinito (99)' en el panel de opciones avanzadas.
+- Corrección del error en la descarga de actualizaciones desde Google Drive (evasión de la advertencia de virus para archivos grandes).
+- Optimización general en los flujos de búsqueda y descarga de la aplicación.
 
 ## Características Técnicas de Desarrollo
 

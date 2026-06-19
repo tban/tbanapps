@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
-  "notes": "- Implementación de mecanismo de auto-actualización automática desde Google Drive.\n- Soporte para comprobación manual de actualizaciones desde el menú de la aplicación.\n- Correcciones de errores y optimización en la descarga y combinación de archivos PDF.\n- Añadido enlace a Twitter/X del desarrollador (@Tbanr) en la pantalla principal.",
-  "date": "2026-06-18T22:19:25.659Z"
+  "version": "1.0.2",
+  "notes": "- Eliminación de la opción de profundidad de búsqueda 'Infinito (99)' en el panel de opciones avanzadas.\n- Corrección del error en la descarga de actualizaciones desde Google Drive (evasión de la advertencia de virus para archivos grandes).\n- Optimización general en los flujos de búsqueda y descarga de la aplicación.",
+  "date": "2026-06-19T04:33:42.126Z"
 }

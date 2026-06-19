@@ -1,8 +1,6 @@
 # AnoniData
 
-**Aplicación de escritorio local para la anonimización de PDFs conforme a RGPD**
-
-AnoniData es una herramienta profesional diseñada para eliminar de forma irreversible datos de carácter personal (PII) en documentos PDF. Todo el procesamiento se realiza de manera 100% local en el ordenador del usuario, garantizando el cumplimiento estricto del RGPD (Reglamento General de Protección de Datos) y el principio de "Zero Data Retention".
+AnoniData es una herramienta de escritorio diseñada para eliminar de forma irreversible datos de carácter personal (PII) en documentos PDF. No se toca el PDF original, generando un nuevo PDF anonimizado en la misma carpeta del documento. Todo el procesamiento se realiza de manera 100% local en tu ordenador, garantizando el cumplimiento  del RGPD (Reglamento General de Protección de Datos) y el principio de 'Zero Data Retention'
 
 ## 🚀 Últimas Novedades
 
