@@ -7,9 +7,18 @@
     "AnoniData.dmg"
   ],
   "mainInstallerFilename": "AnoniData.dmg",
-  "downloadUrls": {
-    "AnoniData.dmg": "https://drive.google.com/open?id=1bxE2vziPKfNEbWwSo0zO6IG_3qz7EwCc&usp=drive_fs",
-    "AnoniData.exe": "https://drive.google.com/open?id=1aE8XuzonmI9Bi50Th7vk9FawOHkthf_4&usp=drive_fs",
-    "version.json": "https://drive.google.com/open?id=11wml7BF4ZO17coEiimKNJk_tfIMAvWDq&usp=drive_fs"
+  "platforms": {
+    "mac": {
+      "label": "macOS (.dmg)",
+      "filename": "AnoniData.dmg",
+      "arch": "Universal",
+      "url": "https://drive.google.com/uc?export=download&id=1bxE2vziPKfNEbWwSo0zO6IG_3qz7EwCc&confirm=t"
+    },
+    "windows": {
+      "label": "Windows (.exe)",
+      "filename": "AnoniData.exe",
+      "arch": "x64",
+      "url": "https://drive.google.com/uc?export=download&id=1aE8XuzonmI9Bi50Th7vk9FawOHkthf_4&confirm=t"
+    }
   }
 }

@@ -113,13 +113,12 @@ async function loadDynamicShowcase(userOS) {
       downloads: {
         mac: {
           label: "macOS (.dmg)",
-          urlTemplate: "https://github.com/tban/tbanapps/releases/download/v{VERSION}/AnoniData.dmg",
           localPath: "ANONIDATA/AnoniData.dmg",
           arch: "Universal"
         },
         windows: {
           label: "Windows (.exe)",
-          urlTemplate: "https://drive.google.com/uc?export=download&id=1aE8XuzonmI9Bi50Th7vk9FawOHkthf_4&confirm=t",
+          localPath: "ANONIDATA/AnoniData.exe",
           arch: "x64"
         }
       }
@@ -147,14 +146,12 @@ async function loadDynamicShowcase(userOS) {
       downloads: {
         mac: {
           label: "macOS (.dmg)",
-          urlTemplate: "https://github.com/tban/tbanapps/releases/download/v{VERSION}/PDF%20Collector-{VERSION}.dmg",
-          localPath: "GETURLFILES/PDF Collector-{VERSION}.dmg",
+          localPath: "GETURLFILES/PDF Collector.dmg",
           arch: "Intel / Apple Silicon"
         },
         windows: {
           label: "Windows (.exe)",
-          urlTemplate: "https://github.com/tban/tbanapps/releases/download/v{VERSION}/PDF%20Collector%20Setup%20{VERSION}.exe",
-          localPath: "GETURLFILES/PDF Collector Setup {VERSION}.exe",
+          localPath: "GETURLFILES/PDF Collector Setup.exe",
           arch: "x64"
         }
       }

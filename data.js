@@ -26,7 +26,7 @@ const appsData = [
     downloads: {
       mac: {
         label: "macOS (.dmg)",
-        url: "https://github.com/tban/tbanapps/releases/download/v1.0.0/AnoniData.dmg",
+        url: "https://drive.google.com/uc?export=download&id=1bxE2vziPKfNEbWwSo0zO6IG_3qz7EwCc&confirm=t",
         localPath: "ANONIDATA/AnoniData.dmg",
         arch: "Universal"
       },
@@ -89,14 +89,14 @@ const appsData = [
     downloads: {
       mac: {
         label: "macOS (.dmg)",
-        url: "https://github.com/tban/tbanapps/releases/download/v1.0.5/PDF%20Collector-1.0.5.dmg",
-        localPath: "GETURLFILES/PDF Collector-1.0.5.dmg",
+        url: "https://drive.google.com/uc?export=download&id=1rqYyTvLDng41QaHuyNpGiAuYv2hzUuJ1&confirm=t",
+        localPath: "GETURLFILES/PDF Collector.dmg",
         arch: "Intel / Apple Silicon"
       },
       windows: {
         label: "Windows (.exe)",
-        url: "https://github.com/tban/tbanapps/releases/download/v1.0.5/PDF%20Collector%20Setup%201.0.5.exe",
-        localPath: "GETURLFILES/PDF Collector Setup 1.0.5.exe",
+        url: "https://drive.google.com/uc?export=download&id=1Pmu1TKb3z0BTc9_bJFaUxlAmgO38CDrS&confirm=t",
+        localPath: "GETURLFILES/PDF Collector Setup.exe",
         arch: "x64"
       }
     }
