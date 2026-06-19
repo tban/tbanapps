@@ -133,7 +133,7 @@ function renderAppShowcase(userOS) {
           </div>
         </div>
         <div class="app-meta">
-          ${isRecent ? '<span class="recent-badge">Novedad</span>' : ''}
+          ${isRecent ? '<span class="recent-badge">Reciente</span>' : ''}
           <span class="version-badge">v${app.version}</span>
         </div>
       </div>
