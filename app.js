@@ -13,6 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
   
   // Render App Showcase
   renderAppShowcase(userOS);
+  
+  // Calculate and display last publication time
+  updateLastPublishTime();
 });
 
 // Detect user operating system for download prioritization
@@ -102,6 +105,18 @@ function renderAppShowcase(userOS) {
       });
     }
 
+    // Check if app has recent updates (within 10 days)
+    let isRecent = false;
+    if (app.releaseDate) {
+      const releaseDate = new Date(app.releaseDate);
+      const currentDate = new Date();
+      const diffTime = currentDate - releaseDate;
+      const diffDays = diffTime / (1000 * 60 * 60 * 24);
+      if (diffDays >= 0 && diffDays <= 10) {
+        isRecent = true;
+      }
+    }
+
     // Build features list HTML
     const featuresListHTML = app.features.map(feat => `<li>${feat}</li>`).join("");
     
@@ -118,6 +133,7 @@ function renderAppShowcase(userOS) {
           </div>
         </div>
         <div class="app-meta">
+          ${isRecent ? '<span class="recent-badge">Novedad</span>' : ''}
           <span class="version-badge">v${app.version}</span>
         </div>
       </div>
@@ -172,63 +188,51 @@ function renderAppShowcase(userOS) {
         }
       });
     });
-
-    // Setup download disclaimer trigger for this card
-    const downloadBtns = card.querySelectorAll(".btn-download");
-    downloadBtns.forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        e.preventDefault();
-        activeDownloadUrl = btn.getAttribute("href");
-        showDownloadModal();
-      });
-    });
   });
 }
 
-// Modal DOM elements and handlers
-let activeDownloadUrl = null;
-
-const modalOverlay = document.getElementById("download-modal");
-const modalCancelBtn = document.getElementById("modal-cancel-btn");
-const modalAcceptBtn = document.getElementById("modal-accept-btn");
-
-function showDownloadModal() {
-  if (!modalOverlay) return;
-  modalOverlay.style.display = "flex";
-  modalOverlay.offsetHeight;
-  modalOverlay.classList.add("show");
+// Update elapsed time since last publish in the header
+function updateLastPublishTime() {
+  const container = document.getElementById("last-publish-time");
+  if (!container || typeof lastPublishedDate === 'undefined') return;
+  
+  const elapsedText = timeAgo(lastPublishedDate);
+  container.textContent = `Publicado: ${elapsedText}`;
 }
 
-function hideDownloadModal() {
-  if (!modalOverlay) return;
-  modalOverlay.classList.remove("show");
-  setTimeout(() => {
-    modalOverlay.style.display = "none";
-  }, 300);
-}
+// Helper to format time difference
+function timeAgo(dateString) {
+  const date = new Date(dateString);
+  const now = new Date();
+  const seconds = Math.floor((now - date) / 1000);
+  
+  if (seconds < 0) {
+    return "Hace un momento";
+  }
+  
+  const intervals = {
+    año: 31536000,
+    mes: 2592000,
+    día: 86400,
+    hora: 3600,
+    minuto: 60
+  };
+  
+  const plurals = {
+    año: "años",
+    mes: "meses",
+    día: "días",
+    hora: "horas",
+    minuto: "minutos"
+  };
 
-if (modalCancelBtn) {
-  modalCancelBtn.addEventListener("click", hideDownloadModal);
-}
-
-if (modalOverlay) {
-  modalOverlay.addEventListener("click", (e) => {
-    if (e.target === modalOverlay) {
-      hideDownloadModal();
+  for (let key in intervals) {
+    const value = intervals[key];
+    const count = Math.floor(seconds / value);
+    if (count >= 1) {
+      const unit = count === 1 ? key : plurals[key];
+      return `Hace ${count} ${unit}`;
     }
-  });
-}
-
-if (modalAcceptBtn) {
-  modalAcceptBtn.addEventListener("click", () => {
-    if (activeDownloadUrl) {
-      const tempLink = document.createElement("a");
-      tempLink.href = activeDownloadUrl;
-      tempLink.setAttribute("target", "_self");
-      document.body.appendChild(tempLink);
-      tempLink.click();
-      document.body.removeChild(tempLink);
-    }
-    hideDownloadModal();
-  });
+  }
+  return "Hace unos instantes";
 }
