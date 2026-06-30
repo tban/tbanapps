@@ -5,8 +5,8 @@ const appsData = [
     id: "anonidata",
     name: "AnoniData",
     tagline: "Anonimización de PDFs 100% Local y Segura",
-    version: "1.0.1",
-    releaseDate: "2026-06-19T08:52:48.551Z",
+    version: "1.0.3",
+    releaseDate: "2026-06-30T21:29:38Z",
     logo: "ANONIDATA/logo.png",
     description: "AnoniData es una herramienta profesional de escritorio diseñada para eliminar de forma irreversible datos de carácter personal (PII) en documentos PDF. Todo el procesamiento se realiza de manera 100% local en tu ordenador, garantizando el cumplimiento estricto del RGPD (Reglamento General de Protección de Datos) y el principio de 'Zero Data Retention'.",
     features: [
@@ -70,8 +70,8 @@ const appsData = [
     id: "geturlfiles",
     name: "PDF Collector",
     tagline: "Descarga y fusión de PDFs desde cualquier sitio web",
-    version: "1.0.5",
-    releaseDate: "2026-06-19T08:58:29.007Z",
+    version: "1.0.9",
+    releaseDate: "2026-06-19T19:20:45.736Z",
     logo: "GETURLFILES/logo.png",
     description: "PDF Collector es una potente utilidad de escritorio que simplifica el web scraping de archivos PDF. Introduce cualquier enlace web y la aplicación analizará el código HTML, detectará los enlaces de descarga de PDFs de forma concurrente, los descargará en tu equipo local y te permitirá combinarlos en un único documento unificado o empaquetarlos en un archivo ZIP con un solo clic.",
     features: [
@@ -95,7 +95,7 @@ const appsData = [
       },
       windows: {
         label: "Windows (.exe)",
-        url: "https://drive.google.com/uc?export=download&id=1Pmu1TKb3z0BTc9_bJFaUxlAmgO38CDrS&confirm=t",
+        url: "https://drive.google.com/uc?export=download&id=1_dNrj9_vIQH6RzJL5venBZHF40l3hwd7&confirm=t",
         localPath: "GETURLFILES/PDF Collector Setup.exe",
         arch: "x64"
       }
