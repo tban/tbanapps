@@ -3,6 +3,7 @@ const lastPublishedDate = "2026-07-01T06:04:38+01:00";
 const appsData = [
   {
     id: "anonidata",
+    category: "desktop",
     name: "AnoniData",
     tagline: "Anonimización de PDFs 100% Local y Segura",
     version: "1.0.3",
@@ -39,6 +40,7 @@ const appsData = [
   },
   {
     id: "caffeinatenow",
+    category: "desktop",
     name: "CaffeinateNow",
     tagline: "Control de reposo minimalista y moderno para macOS",
     version: "1.6",
@@ -68,6 +70,7 @@ const appsData = [
   },
   {
     id: "geturlfiles",
+    category: "desktop",
     name: "PDF Collector",
     tagline: "Descarga y fusión de PDFs desde cualquier sitio web",
     version: "1.0.9",
@@ -98,6 +101,37 @@ const appsData = [
         url: "https://drive.google.com/uc?export=download&id=1_dNrj9_vIQH6RzJL5venBZHF40l3hwd7&confirm=t",
         localPath: "GETURLFILES/PDF Collector Setup.exe",
         arch: "x64"
+      }
+    }
+  },
+  {
+    id: "medicaos",
+    category: "mobile",
+    name: "MediCaos",
+    tagline: "Controla la correcta toma de medicamentos",
+    version: "1.0.0",
+    releaseDate: "2021-01-28T12:00:00Z",
+    logo: "MEDICAOS/logo.png",
+    description: "App para ayudar a controlar la correcta toma de medicamentos. Sencilla y directa, sin opciones complicadas, diseñada para su uso fácil. Anota tus tomas al instante de manera segura.",
+    features: [
+      "Sencilla y directa: Sin opciones complicadas, diseñada para su uso fácil.",
+      "Control total: Anota tus tomas al instante.",
+      "Seguro: Tus datos no se comparten con terceros."
+    ],
+    releaseNotes: [
+      "Mejoras de rendimiento y estabilidad en la aplicación móvil.",
+      "Compatibilidad ampliada con las últimas versiones del sistema operativo."
+    ],
+    downloads: {
+      ios: {
+        label: "iOS (App Store)",
+        url: "https://apps.apple.com/es/app/medicaos/id1549365636",
+        arch: "iPhone/iPad"
+      },
+      android: {
+        label: "Android (Google Play)",
+        url: "https://play.google.com/store/apps/details?id=es.tban.medicaos",
+        arch: "Android 5.0+"
       }
     }
   }

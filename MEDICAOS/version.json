@@ -1,0 +1,14 @@
+{
+  "version": "1.0.0",
+  "date": "2021-01-28T12:00:00Z",
+  "platforms": {
+    "ios": {
+      "label": "iOS (App Store)",
+      "url": "https://apps.apple.com/es/app/medicaos/id1549365636"
+    },
+    "android": {
+      "label": "Android (Google Play)",
+      "url": "https://play.google.com/store/apps/details?id=es.tban.medicaos"
+    }
+  }
+}

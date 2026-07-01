@@ -1,6 +1,8 @@
 // SVG Icon Definitions
 const ICONS = {
   apple: `<svg viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-46-19.1-74.5-18.6-37.4.7-72 22.1-91.2 55.4-38.6 66.8-10 166.7 27.2 220.4 18.2 26.2 39.8 55.4 68.2 54.3 27.4-1.1 37.8-17.6 69.1-17.6 31.1 0 40.8 17.6 69.6 17 29.4-.5 48.6-26.3 66.6-52.9 20.8-30.3 29.3-59.5 29.7-61.1-1-1.7-57-22.1-57.5-86.8zM287.9 78.5C304 58.7 314.9 31.4 312 4c-23.3 1-52.1 15.6-68.8 35.2-14.5 17.1-27.2 44.7-24 71.6 26.2 2.2 53.4-12.2 68.7-32.3z"/></svg>`,
+  ios: `<svg viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-46-19.1-74.5-18.6-37.4.7-72 22.1-91.2 55.4-38.6 66.8-10 166.7 27.2 220.4 18.2 26.2 39.8 55.4 68.2 54.3 27.4-1.1 37.8-17.6 69.1-17.6 31.1 0 40.8 17.6 69.6 17 29.4-.5 48.6-26.3 66.6-52.9 20.8-30.3 29.3-59.5 29.7-61.1-1-1.7-57-22.1-57.5-86.8zM287.9 78.5C304 58.7 314.9 31.4 312 4c-23.3 1-52.1 15.6-68.8 35.2-14.5 17.1-27.2 44.7-24 71.6 26.2 2.2 53.4-12.2 68.7-32.3z"/></svg>`,
+  android: `<svg viewBox="0 0 512 512" fill="currentColor"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>`,
   windows: `<svg viewBox="0 0 448 512" fill="currentColor"><path d="M0 93.7l183.6-25.3v177.4H0V93.7zm0 324.6l183.6 25.3V267.5H0v150.8zM203.8 64.9l244.2-34v212.5H203.8V64.9zm244.2 384.3l-244.2-34V267.5h244.2v181.7z"/></svg>`,
   download: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`,
   external: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`,
@@ -13,6 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
   
   // Render App Showcase Dynamically
   loadDynamicShowcase(userOS);
+  
+  // Set up Category Tabs
+  setupCategoryTabs(userOS);
   
   // Calculate and display last publication time
   updateLastPublishTime();
@@ -155,6 +160,25 @@ async function loadDynamicShowcase(userOS) {
           arch: "x64"
         }
       }
+    },
+    {
+      id: "medicaos",
+      folder: "MEDICAOS",
+      name: "MediCaos",
+      tagline: "Controla la correcta toma de medicamentos",
+      logo: "MEDICAOS/logo.png",
+      downloads: {
+        ios: {
+          label: "iOS (App Store)",
+          url: "https://apps.apple.com/es/app/medicaos/id1549365636",
+          arch: "iPhone/iPad"
+        },
+        android: {
+          label: "Android (Google Play)",
+          url: "https://play.google.com/store/apps/details?id=es.tban.medicaos",
+          arch: "Android 5.0+"
+        }
+      }
     }
   ];
 
@@ -225,6 +249,7 @@ async function loadDynamicShowcase(userOS) {
       
       processedApps.push({
         id: app.id,
+        category: getAppCategory(app.id),
         name: app.name,
         tagline: app.tagline,
         logo: app.logo,
@@ -261,9 +286,16 @@ function renderAppShowcase(appsList, userOS) {
   const grid = document.getElementById("apps-grid");
   if (!grid) return;
   
+  // Global state to store all apps for tab filtering
+  window.allLoadedApps = appsList;
+  window.currentUserOS = userOS;
+
+  const currentCategory = document.querySelector('.category-btn.active')?.dataset.category || 'desktop';
+  const filteredApps = appsList.filter(app => app.category === currentCategory);
+
   grid.innerHTML = "";
   
-  appsList.forEach(app => {
+  filteredApps.forEach(app => {
     const card = document.createElement("article");
     card.className = "app-card";
     card.id = `card-${app.id}`;
@@ -300,7 +332,12 @@ function renderAppShowcase(appsList, userOS) {
         let downloadUrl = dl.url ? dl.url : dl.localPath;
         downloadUrl = getDirectDownloadUrl(downloadUrl);
         
-        const icon = platform === "mac" ? ICONS.apple : ICONS.windows;
+        const isMobile = platform === "ios" || platform === "android";
+        let icon = ICONS.download;
+        if (platform === "mac") icon = ICONS.apple;
+        else if (platform === "windows") icon = ICONS.windows;
+        else if (platform === "ios") icon = ICONS.ios;
+        else if (platform === "android") icon = ICONS.android;
         const isExternal = !!dl.url;
         const isGoogleDrive = downloadUrl.includes("drive.google.com");
         
@@ -308,7 +345,7 @@ function renderAppShowcase(appsList, userOS) {
         const targetAttr = (isExternal && !isGoogleDrive) ? '_blank' : '_self';
         
         downloadsHTML += `
-          <a href="${downloadUrl}" target="${targetAttr}" class="${buttonClass}" title="Descargar para ${platform === 'mac' ? 'macOS' : 'Windows'}">
+          <a href="${downloadUrl}" target="${targetAttr}" class="${buttonClass}" title="Descargar para ${platform}">
             ${icon}
             <div class="btn-text">
               <span>${dl.label}</span>
@@ -385,6 +422,32 @@ function renderAppShowcase(appsList, userOS) {
           targetPanel.classList.add("active");
         }
       });
+    });
+  });
+}
+
+// Helper to get app category from data.js
+function getAppCategory(appId) {
+  if (typeof appsData !== 'undefined') {
+    const app = appsData.find(a => a.id === appId);
+    if (app && app.category) return app.category;
+  }
+  return appId === 'medicaos' ? 'mobile' : 'desktop';
+}
+
+// Setup Category Tabs
+function setupCategoryTabs(userOS) {
+  const tabBtns = document.querySelectorAll('.category-btn');
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      // Remove active class from all
+      tabBtns.forEach(b => b.classList.remove('active'));
+      // Add active to clicked
+      e.target.classList.add('active');
+      // Re-render apps based on active category
+      if (window.allLoadedApps) {
+        renderAppShowcase(window.allLoadedApps, window.currentUserOS);
+      }
     });
   });
 }
