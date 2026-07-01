@@ -639,6 +639,22 @@ footer {
   fill: currentColor;
 }
 
+.legal-disclaimer {
+  width: 100%;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.8rem;
+  color: rgba(160, 160, 176, 0.7);
+  line-height: 1.5;
+  text-align: justify;
+}
+
+.legal-disclaimer strong {
+  color: rgba(200, 200, 215, 0.9);
+  font-weight: 500;
+}
+
 /* Main Category Tabs */
 .main-category-tabs {
   display: flex;
