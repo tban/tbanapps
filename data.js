@@ -1,4 +1,4 @@
-const lastPublishedDate = "2026-07-01T06:04:38+01:00";
+const lastPublishedDate = "2026-07-28T07:46:00+01:00";
 
 const appsData = [
   {
@@ -7,7 +7,7 @@ const appsData = [
     name: "AnoniData",
     tagline: "Anonimización de PDFs 100% Local y Segura",
     version: "1.0.3",
-    releaseDate: "2026-07-01T04:50:56.234Z",
+    releaseDate: "2026-07-28T06:06:00.000Z",
     logo: "ANONIDATA/logo.png",
     description: "AnoniData es una herramienta profesional de escritorio diseñada para eliminar de forma irreversible datos de carácter personal (PII) en documentos PDF. Todo el procesamiento se realiza de manera 100% local en tu ordenador, garantizando el cumplimiento estricto del RGPD (Reglamento General de Protección de Datos) y el principio de 'Zero Data Retention'.",
     features: [
@@ -19,6 +19,9 @@ const appsData = [
       "Logs sanitizados localmente para evitar la fuga accidental de datos sensibles"
     ],
     releaseNotes: [
+      "Clasificación de Documentos Mejorada: Optimización del motor de análisis para clasificar automáticamente páginas con imágenes o gráficos grandes dentro del flujo de OCR, mejorando la precisión en PDFs mixtos y escaneados.",
+      "Compatibilidad con Windows (Python 3.12/3.13): Adaptación del entorno de ejecución de Python en Windows para soportar las versiones más recientes y estables de Python sin conflictos de dependencias.",
+      "Robustez de Comunicación IPC: Mejoras en la comunicación entre el frontend (React) y el backend local (PyMuPDF sidecar) para asegurar una consistencia total del estado de los archivos y reportar correctamente metadatos de páginas.",
       "Migración a Tauri v2: Transición desde Electron para optimizar el rendimiento, reducir el consumo de memoria a la mitad y recortar drásticamente el tamaño del instalador.",
       "Implementación de Dark Mode: Interfaz adaptativa con soporte completo para modo oscuro y diseño renovado de iconos.",
       "Detección Visual Integrada (OCR): Mejoras significativas en el backend de Python para la detección y redacción de firmas manuscritas y códigos QR dentro de los documentos.",

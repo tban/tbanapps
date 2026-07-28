@@ -1,8 +1,8 @@
 {
   "productName": "Anonidata",
   "version": "1.0.3",
-  "build": 1,
-  "date": "2026-07-01T04:50:56.234Z",
+  "build": 2,
+  "date": "2026-07-28T06:06:00.000Z",
   "platforms": {
     "mac": {
       "filename": "Anonidata.dmg",
