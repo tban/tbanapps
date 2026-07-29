@@ -4,9 +4,6 @@ AnoniData es una herramienta de escritorio diseñada para eliminar de forma irre
 
 ## 🚀 Últimas Novedades
 
-- **Clasificación de Documentos Mejorada**: Optimización del motor de análisis para clasificar automáticamente páginas con imágenes o gráficos grandes dentro del flujo de OCR, mejorando la precisión en PDFs mixtos y escaneados.
-- **Compatibilidad con Windows (Python 3.12/3.13)**: Adaptación del entorno de ejecución de Python en Windows para soportar las versiones más recientes y estables de Python sin conflictos de dependencias.
-- **Robustez de Comunicación IPC**: Mejoras en la comunicación entre el frontend (React) y el backend local (PyMuPDF sidecar) para asegurar una consistencia total del estado de los archivos y reportar correctamente metadatos de páginas.
 - **Migración a Tauri v2**: Transición desde Electron a Tauri v2 para un rendimiento optimizado, menor consumo de memoria y tamaño de instalador reducido, además de un aislamiento de seguridad mejorado en el proceso IPC.
 - **Implementación de Dark Mode**: Interfaz adaptativa con soporte completo para modo oscuro y diseño renovado de iconos, ofreciendo una experiencia visual premium y moderna.
 - **Detección Visual Integrada (OCR)**: Mejoras significativas en el backend de Python para la detección y redacción de firmas manuscritas y códigos QR dentro de los documentos.
