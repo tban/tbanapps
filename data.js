@@ -1,4 +1,4 @@
-const lastPublishedDate = "2026-07-28T07:46:00+01:00";
+const lastPublishedDate = "2026-07-29T10:31:00+01:00";
 
 const appsData = [
   {
@@ -7,7 +7,7 @@ const appsData = [
     name: "AnoniData",
     tagline: "Anonimización de PDFs 100% Local y Segura",
     version: "1.0.3",
-    releaseDate: "2026-07-28T06:06:00.000Z",
+    releaseDate: "2026-07-29T09:14:52.000Z",
     logo: "ANONIDATA/logo.png",
     description: "AnoniData es una herramienta profesional de escritorio diseñada para eliminar de forma irreversible datos de carácter personal (PII) en documentos PDF. Todo el procesamiento se realiza de manera 100% local en tu ordenador, garantizando el cumplimiento estricto del RGPD (Reglamento General de Protección de Datos) y el principio de 'Zero Data Retention'.",
     features: [
@@ -36,7 +36,7 @@ const appsData = [
       },
       windows: {
         label: "Windows (.exe)",
-        url: "https://drive.google.com/uc?export=download&id=1aE8XuzonmI9Bi50Th7vk9FawOHkthf_4&confirm=t",
+        url: "https://drive.google.com/uc?export=download&id=18FS-8OIBIHfzJ0sRe-bJuHpb05UbOITJ&confirm=t",
         arch: "x64"
       }
     }

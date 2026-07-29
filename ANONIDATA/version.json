@@ -1,8 +1,8 @@
 {
   "productName": "Anonidata",
   "version": "1.0.3",
-  "build": 2,
-  "date": "2026-07-28T06:06:00.000Z",
+  "build": 3,
+  "date": "2026-07-29T09:14:52.000Z",
   "platforms": {
     "mac": {
       "filename": "Anonidata.dmg",
@@ -10,7 +10,7 @@
     },
     "windows": {
       "filename": "Anonidata.exe",
-      "url": "https://drive.google.com/uc?export=download&id=1aE8XuzonmI9Bi50Th7vk9FawOHkthf_4&confirm=t"
+      "url": "https://drive.google.com/uc?export=download&id=18FS-8OIBIHfzJ0sRe-bJuHpb05UbOITJ&confirm=t"
     }
   }
 }
