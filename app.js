@@ -118,12 +118,12 @@ async function loadDynamicShowcase(userOS) {
       downloads: {
         mac: {
           label: "macOS (.dmg)",
-          localPath: "ANONIDATA/AnoniData.dmg",
+          localPath: "ANONIDATA/Anonidata.dmg",
           arch: "Universal"
         },
         windows: {
           label: "Windows (.exe)",
-          localPath: "ANONIDATA/AnoniData.exe",
+          localPath: "ANONIDATA/Anonidata.exe",
           arch: "x64"
         }
       }
