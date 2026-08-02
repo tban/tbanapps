@@ -1,16 +1,16 @@
 {
   "productName": "Anonidata",
-  "version": "1.0.4",
-  "build": 6,
-  "date": "2026-07-29T23:30:46.877Z",
+  "version": "1.0.10",
+  "build": 14,
+  "date": "2026-08-02T05:17:42.453Z",
   "platforms": {
     "mac": {
       "filename": "Anonidata.dmg",
-      "url": "https://drive.google.com/open?id=12rbNznz9t2wol6HabmirJ6X48BuXMNpa&usp=drive_fs"
+      "url": "https://github.com/tban/tbanapps/releases/download/v1.0.10/Anonidata.dmg"
     },
     "windows": {
-      "filename": "anonidata.exe",
-      "url": "https://drive.google.com/open?id=18FS-8OIBIHfzJ0sRe-bJuHpb05UbOITJ&usp=drive_fs"
+      "filename": "Anonidata.exe",
+      "url": "https://github.com/tban/tbanapps/releases/download/v1.0.10/Anonidata.exe"
     }
   }
 }
