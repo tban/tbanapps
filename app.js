@@ -112,6 +112,7 @@ async function loadDynamicShowcase(userOS) {
     {
       id: "anonidata",
       folder: "ANONIDATA",
+      versionUrl: "https://raw.githubusercontent.com/tban/anonidata/main/version.json",
       name: "AnoniData",
       tagline: "Anonimización de PDFs 100% Local y Segura",
       logo: "ANONIDATA/logo.png",
@@ -187,8 +188,9 @@ async function loadDynamicShowcase(userOS) {
   for (const app of appsConfig) {
     try {
       // Fetch version.json and README.md in parallel
+      const versionFetchUrl = app.versionUrl ? app.versionUrl : `${app.folder}/version.json`;
       const [versionRes, readmeRes] = await Promise.all([
-        fetch(`${app.folder}/version.json`),
+        fetch(versionFetchUrl),
         fetch(`${app.folder}/README.md`)
       ]);
       
