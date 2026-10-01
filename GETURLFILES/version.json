@@ -1,13 +1,13 @@
 {
   "productName": "PDF Collector",
-  "version": "1.0.9",
-  "build": 9,
-  "date": "2026-06-19T19:20:45.736Z",
+  "version": "1.0.10",
+  "build": 11,
+  "date": "2026-10-01T17:45:25.586Z",
   "platforms": {
     "mac": {
       "label": "macOS (.dmg)",
       "filename": "PDF Collector.dmg",
-      "arch": "Intel / Apple Silicon",
+      "arch": "Universal (Intel y Apple Silicon)",
       "url": "https://drive.google.com/uc?export=download&id=1rqYyTvLDng41QaHuyNpGiAuYv2hzUuJ1&confirm=t"
     },
     "windows": {

@@ -4,12 +4,9 @@ Descarga y combina PDFs de cualquier sitio web
 
 ## Últimas Novedades
 
-### Versión 1.0.9 (Lanzada el 19/6/2026)
-- Corrección del enlace de descarga del actualizador para Windows en Google Drive (apuntando al ID de archivo activo correcto).
-- Cierre forzado automático de la aplicación y procesos secundarios durante la instalación/actualización para evitar bloqueos en Windows.
-- Corrección de visualización del icono (favicon) y barra de tareas en la versión de Windows.
-- Ocultación de todos los menús en la versión de Windows, dejando únicamente el menú "Ayuda" con las opciones de "Buscar actualización..." y "Acerca de".
-- Optimización y reducción de tamaño en los recursos de imagen (logo PNG de 256x256 e icon.ico de 256x256).
+### Versión 1.0.10 (Lanzada el 1/10/2026)
+- Compilación binaria universal para macOS (compatible de forma nativa con procesadores Apple Silicon M1/M2/M3/M4 e Intel sin requerir Rosetta).
+- Corrección de distribución y enlaces de descarga de la versión universal para Mac.
 
 ## Características Técnicas de Desarrollo
 
